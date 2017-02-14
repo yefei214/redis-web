@@ -1,0 +1,131 @@
+$def with (i,*cmd)
+<html lang="zh" class="no-js">
+    <head>
+        <title></title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/static/css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+    </head>
+
+    <body>
+        <div class="container">
+			<header class="codrops-header">
+				<h1>Redis Manage <span>Simple ideas for enhancing text input interactions</span></h1>
+			</header>
+            <form name="form" method="post" action="#" >
+            <section class="content bgcolor-8">
+                <div>
+                    <h2>Spring</h2>
+                    <span class="input input--isao">
+                        <input class="input__field input__field--isao" type="text" id="input-1" name="key" value="$i.get('key', None)"  >
+                        <label class="input__label input__label--isao" for="input-1" data-content="key" >
+                            <span class="input__label-content input__label-content--isao">key</span>
+                        </label>
+                    </span>
+                    <span class="input input--isao">
+                        <input class="input__field input__field--isao" type="text" id="input-2" name="value" value="$i.get('value', None)" >
+                        <label class="input__label input__label--isao" for="input-2" data-content="value" >
+                            <span class="input__label-content input__label-content--isao">value</span>
+                            <a class="large button black" href="javascript:get();">get</a>
+                            <a class="large button black" href="javascript:del();">del</a>
+                            <a class="large button black" href="javascript:set();">set</a>
+                        </label>
+                    </span>
+
+                </div>
+
+                <div>
+                <h2>Hash</h2>
+                    <div>
+                        <span class="input input--isao">
+                            <input class="input__field input__field--isao" type="text" id="input-33" name="hname" value="$i.get('hname', None)" >
+                            <label class="input__label input__label--isao" for="input-33" data-content="hashname" >
+                                <span class="input__label-content input__label-content--isao">hashname</span>
+                            </label>
+                        </span>
+                    </div>
+
+                    <span class="input input--isao">
+                        <input class="input__field input__field--isao" type="text" id="input-34" name="hkey" value="$i.get('hkey', None)" >
+                        <label class="input__label input__label--isao" for="input-34" data-content="key" >
+                            <span class="input__label-content input__label-content--isao">key</span>
+                        </label>
+                    </span>
+                    <span class="input input--isao">
+                        <input class="input__field input__field--isao" type="text" id="input-35" name="hvalue" value="$i.get('hvalue', None)" >
+                        <label class="input__label input__label--isao" for="input-35" data-content="value" >
+                            <span class="input__label-content input__label-content--isao">value</span>
+                            <a class="large button black" href="javascript:hget();">hget</a>
+                            <a class="large button black" href="javascript:hdel();">hdel</a>
+                        </label>
+                    </span>
+                </div>
+
+			</section>
+			<section class="content bgcolor-4">
+                    <h2>命令行工具</h2>
+                    <div>
+                        <span class="input input--isao">
+                            <input class="input__field input__field--isao" type="text" name='cmd' id="input-38" style="width:700px;" value="$i.get('cmd', None)" >
+                            <label class="input__label input__label--isao" for="input-38" data-content="命令" style="width:700px;">
+                                <span class="input__label-content input__label-content--isao">CMD</span>
+                                <a class="large button black" href="javascript:cmd();">R U N</a>
+                            </label>
+                        </span>
+                    </div>
+
+                    <div>
+                        <span class="input input--isao">
+                            <input class="input__field input__field--isao" type="text" name="out" id="input-39" style="width:700px;" value="$i.get('out', None)" >
+                            <label class="input__label input__label--isao" for="input-39" data-content="输出" style="width:700px;">
+                                <span class="input__label-content input__label-content--isao">OUT</span>
+                            </label>
+                        </span>
+                    </div>
+			</section>
+            </form>
+		</div><!-- /container -->
+    </body>
+
+    <script language="Javascript">
+        function getTop(){
+            var top = document.documentElement.scrollTop || document.body.scrollTop;
+            var i = document.createElement("input");
+            i.type = "text";
+            i.value = top;
+            i.name = "top";
+            form.appendChild(i);
+        }
+        function get(){
+            getTop();
+            form.action="/redis/get";
+            form.submit();}
+        function del(){
+            getTop()
+            form.action="/redis/del";
+            form.submit();}
+        function set(){
+            getTop()
+            form.action="/redis/set";
+            form.submit();}
+        function cmd(){
+            getTop()
+            form.action="/redis/cmd";
+            form.submit();}
+        function hget(){
+            getTop()
+            form.action="/redis/hget";
+            //var top = document.documentElement.scrollTop || document.body.scrollTop;
+            //form.action = "/redis/" + top
+            form.submit();}
+        function hdel(){
+            getTop()
+            form.action="/redis/hdel";
+            form.submit();}
+        window.scrollTo(0, "$i.get('top', None)");
+    </script>
+</html>
